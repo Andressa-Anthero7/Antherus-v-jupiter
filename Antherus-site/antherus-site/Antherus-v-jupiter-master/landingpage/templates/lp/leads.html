@@ -1,0 +1,184 @@
+
+
+{% extends "lp/base-adm.html" %}
+
+{% block content %}
+
+<script>
+
+         var onLoad;
+
+            function onLoader() {
+              onLoad = setTimeout(showPage, 1000);
+              document.getElementById("display-leads").style.visibility = "hidden";
+            }
+
+            function showPage() {
+              document.getElementById("loader").style.visibility = "hidden";
+              document.getElementById("display-leads").style.visibility = "visible";
+            }
+
+        window.onload = function(){
+            document.getElementById("id_anotacoes").disabled = true;
+            onLoader()
+        };
+
+        document.getElementById("edit-anotacoes").onmouseclick = function(){editAnotacoes()}
+        function editAnotacoes(){
+            document.getElementById("id_anotacoes").disabled = false;
+            document.getElementById("edit-anotacoes").style.visibility='hidden';
+            document.getElementById("salvar-anotacoes").style.visibility='visible';
+        };
+
+        document.getElementById("salvar-anotacoes").onmouseclick = function(){salvarAnotacoes()}
+        function salvarAnotacoes(){
+            document.getElementById("id_anotacoes").disabled = false;
+            document.getElementById("edit-anotacoes").style.visibility='hidden';
+            document.getElementById("salvar-anotacoes").style.visibility='hidden';
+        };
+
+
+
+    </script>
+
+    <style>
+        /* Loader da Pagina */
+        /* Center the loader */
+            #loader {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              z-index: 1;
+              width: 120px;
+              height: 120px;
+              margin: -76px 0 0 -76px;
+              border: 16px solid #f3f3f3;
+              border-radius: 50%;
+              border-top: 16px solid #3498db;
+              -webkit-animation: spin 2s linear infinite;
+              animation: spin 2s linear infinite;
+            }
+
+            @-webkit-keyframes spin {
+              0% { -webkit-transform: rotate(0deg); }
+              100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+
+            /* Add animation to "page content" */
+            .animate-bottom {
+              position: relative;
+              -webkit-animation-name: animatebottom;
+              -webkit-animation-duration: 1s;
+              animation-name: animatebottom;
+              animation-duration: 1s
+            }
+
+            @-webkit-keyframes animatebottom {
+              from { bottom:-100px; opacity:0 }
+              to { bottom:0px; opacity:1 }
+            }
+
+            @keyframes animatebottom {
+              from{ bottom:-100px; opacity:0 }
+              to{ bottom:0; opacity:1 }
+            }
+
+    </style>
+
+            <div id="loader"></div>
+            <!-- MAIN - CONTEUDO PRINCIPAL -->
+            <main class=" col-11" id="display-leads">
+                    <a href="/dashboard/caixa-leads/" class="btn btn-sm btn-danger col-1 my-4 ml-5"  style="width:250px; min-width:250px;">
+                         <i class="fa fa-arrow-circle-left mr-2" aria-hidden="true"></i>
+                         VOLTAR
+                     </a>
+                <!--CARD COM LEADS -->
+                <div class="card col-12 ml-1" id="card-leads" >
+
+                        <div class="">
+                            <span class=" font-weight-bold" id="num_leads">Leads Id:<span>{{open_leads.pk}}</span></span>
+                            <span class="font-weight-bold" >Recebido em:<span style="font-size:13px;">{{open_leads.data}}</span></span>
+                            <span class=" font-weight-bold" id="status-leads">Status:<span id="status-bar-{{open_leads.status|lower|slice:'6:'}}" class="border rounded p-1  font-weight-bold status-bar-{{cx_leads_novos.pk}} text-dark mark">{{open_leads.status}}</span></span>
+                        </div>
+                        <hr class="mt-2 " style="background:black">
+                        <span class="" style="">
+                                <div>
+                                    <span class="font-weight-bold">Nome:</span>
+                                    <span>{{open_leads.nome}}</span>
+                                </div>
+                                <div>
+                                    <span class="font-weight-bold">What´s App/Telefone:</span>
+                                    <span>{{open_leads.phone}}</span>
+                                </div>
+
+                                <div>
+                                    <span  class="font-weight-bold" >E-mail:</span>
+                                    <span>{{open_leads.email}}</span>
+                                </div>
+                        </span>
+
+
+                        <!-- BOX DE ANOTACOES -->
+                             <form method="POST" class="form-responsivo   d-inline " id="form-anotacoes"
+                               enctype="multipart/form-data" action =""  >
+                                 {% csrf_token %}
+                                        <tr >
+                                            <th><label class="d-block h5 border rounded-top col-8 p-0 text-center ml-5 mt-3"  for="id_anotacoes">Anotações do Atendimento</label></th>
+                                                <td>
+                                                    <textarea  name="anotacoes" cols="40" rows="10"  maxlength="255" id="id_anotacoes">{{open_leads.anotacoes}}</textarea>
+
+                                                </td>
+                                        </tr>
+                                 <input class=" p-1 btn btn-sm btn-warning d-inline" id="salvar-anotacoes" style="" type="submit" onclick="salvarAnotacoes()" value="salvar" name="salvar-anotacoes" >
+                            </form>
+                            <!--<textarea class="border border-dark rounded col-12  "  id="box-anotacoes"  >{{open_leads.anotacoes}}</textarea>-->
+                            <i class="fa fa-pencil btn border border-dark rounded p-1" style="position:relative;right:0%;top:0%;" id="edit-anotacoes" aria-hidden="true" onclick="editAnotacoes()"></i>
+
+
+
+
+                    <div class="">
+                         <!--Botao WHATS APP -->
+                                    <div  id="" class="btn btn-success text-white d-block my-5 ml-4 " style="width:250px; min-width:250px;">
+                                          <a href="https://wa.me/5516{{open_leads.phone}}?text=Acabei%20de%20%20ver%20a%20promoção%20Landing%20Page%20por%20R$%20299,90">
+                                              <i class="fa fa-whatsapp text-white " aria-hidden="true">Atendimento via What´s App</i>
+                                          </a>
+                                    </div>
+
+                                    <!-- Botão CADASTRAR CLIENTE -->
+                                    <a href="/cadastro-clientes/" class="btn btn-warning mt-0 col-10 px-5" style="position:relative; left:8%; top:-10px;">
+                                        <i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Cadastrar Cliente</a>
+
+
+                        <!- Form Status -->
+                                     <form method="POST" class="form-responsivo  " style="position:relative; left:0%; top:25px; "
+                               enctype="multipart/form-data" action =""  >
+                                 {% csrf_token %}
+                                   {{sttus}}
+
+
+                                 <input class=" p-1 btn btn-lg btn-warning d-inline" style="position:relative; left:10%; top:0px; " type="submit" value="Ok" name="salvar" >
+                            </form>
+
+
+
+
+
+                    </div>
+
+
+
+                     </div>
+                    <!--FINAL CARD COM LEADS -->
+            </main>
+
+            <!-- FINAL MAIN - CONTEUDO PRINCIPAL -->
+
+          <!-- FINAL CONTAINER -->
+
+{% endblock %}

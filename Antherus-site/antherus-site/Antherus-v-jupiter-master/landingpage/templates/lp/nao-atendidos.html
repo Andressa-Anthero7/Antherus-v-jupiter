@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Landing Page - DASHBOARD</title>
+    <script>
+       window.onload = function() {
+                alert("Ready")
+
+            });
+    </script>
+
+
+
+
+	<!-- Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+   <!-- <link rel="stylesheet" type="text/css" href="{% static 'landingpage/css/estilo-dashboard.css' %}">-->
+
+   <!-- <script type="text/javascript" src="{% static 'landingpage/js/dashboard-js.js' %}"></script>-->
+
+
+
+
+
+
+    <!-- Fontawesome CSS -->
+    <script src="https://kit.fontawesome.com/a69cec9c91.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+ {% for form in form %}
+    <style>
+
+            .text-leads{
+            font-size:16px;
+
+        }
+
+         #body-msg-{{form.pk}},#btn-status-{{form.pk}},#bloco-notas-{{form.pk}},#hr-{{form.pk}},#fecha-leads-{{form.pk}}{
+                visibility:hidden;
+                }
+
+    </style>
+
+
+
+
+
+ {% endfor %}
+</head>
+<body class=" "  >
+
+	<div  class=" container-fluid w-100 p-0 m-0 "  >
+		<header class="m-0 p-0  " style="" id="dashboard" >
+			            <!--Logo Marca Acima de XS-->
+
+
+          <div class="row pl-5  bg-warning m-1 bordered rounded" style="position: relative;
+          top:0x; left:2%; height:99px; ">
+            <div class="mt-3" >
+
+                <span class=" bg-white p-1 border rounded" >
+                    <span>Olá:</span>
+                    <span class="">{{request.user|capfirst}}!</span>
+                    <span class="">Você tem :</span>
+                    <span class="">{{ contador }}</span>
+                        <span class="" >Mensagens</span>
+                </span>
+
+                    <!--Botão Não atendidos -->
+                    <span class="col-2 ml-5">
+                        <span class=" btn btn-danger"><span class="ml-1"><a href="{% url 'nao_atendidos' %}">Voltar</a></span></span>
+                    </span>
+
+                <!--Botão Atendidos -->
+                 <span class="col-2 ml-5">
+                     <span class=" btn btn-primary"><span class=" ml-1">Mensagens  atendidas</span></span>
+                 </span>
+
+                <!-- Botão de Area Admnistativa -->
+                <span class="col-2 ml-5">
+                     <span class=" btn btn-light  m-0 "><i class="fa fa-user " aria-hidden="true" style="font-size:36px;"></i></i><p class="m-0 p-0">Perfil</p></span>
+                 </span>
+
+
+
+            </div>
+
+        </div>
+
+
+		</header>
+
+
+
+
+     <main class=" bg-warning py-1 mt-0 pt-0 row" id="conteudo-dashboard"   >
+
+
+
+     <div class="bg-white border rounded  col-10 " id="box-msg" style="position:relative;left:10%;" >
+
+
+  {% for form in form %}
+
+         <div class="mt-3 pt-0 col-12 border border-dark rounded p-2 text-leads " id="msg" style="max-height:250px">
+             <div id="">Status: {{form.status}}</div>
+             <div>Recebido em {{form.data}}</div>
+             <div> Leads Nº {{form.pk}}</div>
+
+                <div class="col-6 mt-2 " style="border:1px solid black;">
+                Nome: {{form.nome}}<br>
+               Numero: {{form.phone}}<br>
+               Email: {{form.email}}<br>
+               Tipo: {{form.tipo}}<br>
+                </div>
+
+
+            <form method="POST" class="form-responsivo   d-inline " style="position:relative; left:25%;top:-160px; " enctype="multipart/form-data" action ="status/{{form.pk}}/"  >
+                 {% csrf_token %}
+                   {{statu}}
+
+
+                 <input class=" p-1 btn btn-sm btn-warning" style="" type="submit" value="Ok" name="salvar">
+            </form>
+
+              <form  method="POST" class="form-responsivo   d-inline " style="position:relative; left:50%; top:-160px; " enctype="multipart/form-data" action ="bloco_notas/{{form.pk}}/"  >
+                 {% csrf_token %}
+                       <tr>
+    <th><label for="id_anotacoes">Anotacoes:</label></th>
+    <td>
+
+      <textarea name="anotacoes" cols="40" rows="10" maxlength="255" id="id_anotacoes" style="height:200px;min-height:200px; max-height:200px;">
+</textarea>
+
+
+
+
+    </td>
+  </tr>
+
+
+                 <input class=" p-1 btn btn-sm btn-warning" style="" type="submit" value="Ok" name="salvar">
+            </form>
+
+         </div>
+         <!--Final Box de Leads-->
+
+
+
+    {%endfor%}
+    </div>
+
+        <div style="border:1px solid bLack;background: black;" class="text-dark">AQUI</div>
+
+
+
+
+
+
+
+
+    </main>
+
+         <div style="border:1px solid bLack;position:relative;left:10%;top:5px;" class="text-white" >
+
+             {% if form.has_other_pages %}
+  <ul class="pagination">
+    {% if form.has_previous %}
+      <li ><a class="btn btn-primary border rounded text-white" href="?page={{ form.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in form.paginator.page_range %}
+      {% if form.number == i %}
+        <li class="active "><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li class=" btn btn-warning mx-1"><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if form.has_next %}
+      <li ><a class="btn btn-primary border rounded text-white" href="?page={{ form.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+         </div>
+
+
+    <!--<div class="col-12">
+        <footer id="footer" class="d-block">
+          <p>Desenvolvido por Antherus  Desenvolvimento Web </p>
+
+          <p class="d-inline"><i class="fa fa-whatsapp  " aria-hidden="true" style="color:  #34af23;" ></i>(16) 99337-9492</p>
+        </footer>
+    </div>-->
+
+	</div>
+		<!-- Fim do Container-->
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ANTHERUS</title>
+
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+
+
+
+
+    <!-- Fontawesome CSS -->
+    <script src="https://kit.fontawesome.com/a69cec9c91.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+
+    <!-- STYLE CSS -->
+    <style type="text/css">
+              p{
+            position:relative;
+            left-50%;
+        }
+
+
+        i{
+            position:relative;
+            left:-90px;
+            top:-5px;
+        }
+
+        #nossa-pagina:hover{
+            background:#aliceblue;
+            font-weight:bold;
+
+        }
+
+
+
+/*****************************************/
+@media(max-width:479.99px) {
+
+    body{
+        max-width:479.99px;
+
+    }
+
+    main{
+          height:2000px;
+          width:1500px;
+
+    }
+
+
+    #area-logo{
+        border: 1px solid red;
+        position: absolute;
+        left:0px;
+        top:0px;
+
+    }
+
+
+
+    #img-logo{
+
+        position: relative;
+        left:25%;
+        top:-20px;
+        border: 1px solid white;
+
+
+    }
+
+
+
+
+    #card-agradecimento{
+        position: relative;
+        left:0%;
+        text-align:center;
+        border: 3px solid white;
+        border-radius: 10px;
+        min-width: 330px;
+        margin-top: 30px;
+
+
+    }
+
+
+    #foguete-img{
+        padding:30px;
+    }
+
+
+
+
+    #btn-whats-app{
+        position:absolute;
+        left:-20%;
+        top:200px;
+        z-index:3;
+        font-size:8px;
+    }
+
+
+
+    #atendimento-via-whatsapp{
+        max-width:250px;
+        position:relative;
+        top:-60px;
+        left:10%;
+
+
+
+    }
+
+
+
+
+
+
+.text-blink{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    -webkit-animation:text-blink 1s linear infinite;
+   -moz-animation:text-blink  1s linear infinite;
+   -ms-animation:text-blink 1s linear infinite;
+   -o-animation: text-blink 1s linear infinite;
+   animation:text-blink  1s linear infinite;
+
+}
+
+.text-static{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+
+}
+
+
+
+@keyframes text-blink{
+    0% { opacity: 1; }
+     100% { opacity: 0; }
+ }
+
+
+
+
+
+
+.footer-mobile{
+    position:absolute;
+    top:3200px;
+    left:-20%;
+    max-width:400px;
+
+}
+
+
+
+
+}
+
+
+/******************************************************************************/
+
+@media(max-width:739.99px) and (min-width:480px) {
+
+    main{
+          height:1900px;
+          width:1500px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #img-logo{
+        position: absolute;
+        left:27%;
+        top:0%;
+        padding:0;
+        min-width:250px;
+        border: 1px solid yellow;
+
+        margin-right: auto;
+        margin-left: auto;
+
+
+
+    }
+
+    #foguete-img{
+        margin-top:50px;
+        margin-bottom: 20px;
+       align-self: center;
+
+
+    }
+
+
+    #card-agradecimento{
+        position:absolute;
+        left:10%;
+        border:5px solid white;
+        border-radius:10px;
+        -webkit-text-stroke-width:1px;
+        -webkit-text-stroke-color:add8e6;
+        min-width:80%;
+        text-align:center;
+    }
+
+
+
+
+
+
+
+
+    #btn-whats-app{
+        position:absolute;
+        left:-20%;
+        top:200px;
+        z-index:3;
+        font-size:8px;
+    }
+
+
+
+    #atendimento-via-whatsapp{
+        max-width:250px;
+        position:relative;
+        top:-60px;
+        left:10%;
+
+
+
+    }
+
+
+
+
+
+
+.text-blink{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    -webkit-animation:text-blink 1s linear infinite;
+   -moz-animation:text-blink  1s linear infinite;
+   -ms-animation:text-blink 1s linear infinite;
+   -o-animation: text-blink 1s linear infinite;
+   animation:text-blink  1s linear infinite;
+
+}
+
+.text-static{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+
+}
+
+
+
+@keyframes text-blink{
+    0% { opacity: 1; }
+     100% { opacity: 0; }
+ }
+
+
+
+
+
+
+.footer-mobile{
+    position:absolute;
+    top:3200px;
+    left:-20%;
+    max-width:400px;
+
+}
+
+
+
+
+
+}
+
+
+/*********************************************************************/
+
+
+@media(max-width:  1059.99px) and (min-width:740px)  {
+
+ main{
+          height:3100px;
+          width:1500px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #area-logo{
+        position: relative;
+        left: 1%;
+        top: 2%;
+        margin:0;
+    }
+
+
+
+    #img-logo{
+        position: absolute;
+        left:34%;
+        top:0%;
+        padding:0;
+        min-width:300px;
+        align-self: center;
+        border: 1px solid red;
+
+
+
+    }
+
+
+    #card-agradecimento{
+        position:absolute;
+        left:5%;
+        border:5px solid white;
+        border-radius:10px;
+        -webkit-text-stroke-width:1px;
+        -webkit-text-stroke-color:add8e6;
+        min-width:90%;
+        text-align:center;
+    }
+
+
+
+
+
+
+
+    #btn-whats-app{
+        position:absolute;
+        left:-20%;
+        top:200px;
+        z-index:3;
+        font-size:8px;
+    }
+
+
+
+    #atendimento-via-whatsapp{
+        max-width:250px;
+        position:relative;
+        top:-60px;
+        left:10%;
+
+
+
+    }
+
+
+
+
+
+
+.text-blink{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    -webkit-animation:text-blink 1s linear infinite;
+   -moz-animation:text-blink  1s linear infinite;
+   -ms-animation:text-blink 1s linear infinite;
+   -o-animation: text-blink 1s linear infinite;
+   animation:text-blink  1s linear infinite;
+
+}
+
+.text-static{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+
+}
+
+
+
+@keyframes text-blink{
+    0% { opacity: 1; }
+     100% { opacity: 0; }
+ }
+
+
+
+
+
+
+.footer-mobile{
+    position:absolute;
+    top:3200px;
+    left:-20%;
+    max-width:400px;
+
+}
+
+
+}
+
+
+
+/***********************************************************************************/
+
+
+/* Formatação Acima de 1080px */
+@media(min-width:  1060.00px)  {
+
+
+    main{
+          height:1700px;
+          width:100%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #area-logo{
+        position: relative;
+        left: 1%;
+        top: 2%;
+        margin:0;
+    }
+
+
+
+    #img-logo{
+        position:relative;
+        left:50px;
+        top:-25px;
+        padding:0;
+        min-width:300px;
+        border: 1px solid blue;
+
+
+
+
+    }
+
+    #foguete-img{
+        margin: 30px;
+    }
+
+
+    #card-agradecimento{
+        position:relative;
+        left:10%;
+        border:5px solid white;
+        border-radius:10px;
+        -webkit-text-stroke-width:1px;
+        -webkit-text-stroke-color:add8e6;
+        min-width:80%;
+        max-width:100%;
+        text-align:center;
+        align-self: center;
+        padding:100px;
+    }
+
+
+
+
+
+
+
+    #btn-whats-app{
+        position:absolute;
+        left:-20%;
+        top:200px;
+        z-index:3;
+        font-size:8px;
+    }
+
+
+
+    #atendimento-via-whatsapp{
+        max-width:250px;
+        position:relative;
+        top:-60px;
+        left:10%;
+
+
+
+    }
+
+
+
+
+
+
+.text-blink{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    -webkit-animation:text-blink 1s linear infinite;
+   -moz-animation:text-blink  1s linear infinite;
+   -ms-animation:text-blink 1s linear infinite;
+   -o-animation: text-blink 1s linear infinite;
+   animation:text-blink  1s linear infinite;
+
+}
+
+.text-static{
+    background:#34af23 ;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+
+}
+
+
+
+@keyframes text-blink{
+    0% { opacity: 1; }
+     100% { opacity: 0; }
+ }
+
+
+
+
+
+
+.footer-mobile{
+    position:absolute;
+    top:3200px;
+    left:-20%;
+    max-width:400px;
+
+}
+
+
+}
+    </style>
+
+</head>
+<body  style="background:#0E0816;">
+
+    <!-- CONTAINER -->
+
+    <div  class=" container-fluid  p-0 m-0 "  >
+        <div class="m-0 p-0 row" style="height:100px;background:#0E0816;" >
+
+            <!--Logo Marca Acima de XS-->
+              <div class="navbar-brand text-white m-0 p-0 "  >
+
+                    <!-- IMAGEM DA LOGO -->
+                    <img class="img img-fluid m-0 p-0" id="img-logo" src="logo2.png" alt="IMAGEM DA LOGO " alt="Imagem Logo">
+
+              </div>
+
+        </div>
+
+
+
+          <!--Conteudo Principal -->
+        <main class=" py-2 px-5 mt-0 row   "  style="background-image:linear-gradient( #8c26df -50%,#5e17eb 75%,#ffffff);"   >
+
+            <div class="col-2" id="card-agradecimento">
+
+                <img src="foguete-2.png" id="foguete-img" class="img img-fluid" alt="Imagem-Foguete">
+                        <h3 class="mb-5" id="">Olá, tudo bem?</h3>
+                        <h3>É muito bom ter o seu contato!!</h3>
+                        <h2 class="m-5">Inovação Digital??</h2>
+                        <h2 class="m-1">Sua empresa está pronta?</h2>
+                        <h4 class="mt-5 p-0">A jornada para o futuro começa agora.<br>Desbrave esse novo mundo!</h4>
+                        <h4 class="mt-5 p-0">Em breve um consultor(a) de Inovação Digital dará continuidade ao atendimento.<br></h4>
+                         <h3 class="m-5">Conte com a agente!!</h3>
+                        <h4 class="m-1 col-12">Equipe Antherus agradece o interessee logo entra em contato.</h4>
+                        <h3 class="mt-5">Enquanto isso você poderá conhecer mais...</h4>
+
+
+
+                         <h3 class="m-5">Através de nossa redes sociais.</h3>
+                            <div class="ml-5">
+                                 <a href="" class=" fa fa-cloud ml-2 p-1 mt-3" style="font-size:85px;">
+                                       <i class="fa fa-facebook-square ml-1  " aria-hidden="true"  style="color:white;font-size:42px;"></i>
+                                 </a>
+
+                                 <a href="" class=" fa fa-cloud ml-2 mt-3" style="font-size:85px;">
+                                       <i class="fa fa-instagram p-0  "  aria-hidden="true" style="font-size:50px;color:white;" ></i>
+                                 </a>
+
+                                 <a  href="" class=" fa fa-cloud ml-2 mt-3" style="font-size:85px;">
+                                      <i class="fa fa-youtube-play ml-0 p-0 " aria-hidden="true" style="color: white;font-size:44px;"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                </div>
+
+
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <div style="position:relative;top:100%;" class="row">
+            <footer id="" class="justify-content-center bg-white col-12 pl-5">
+              <h6 class="mr-5">Desenvolvido por<br> Antherus  Desenvolvimento Web </h6>
+                <i class="fa fa-whatsapp    " aria-hidden="true" style="color:#34af23;font-size:24px;" ></i>
+              <span class="d-inline font-weight-bold ml-1" >(16) 99337-9492</span>
+            </footer>
+        </div>
+
+
+
+
+    </div>
+        <!-- Fim do Container-->
+
+
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

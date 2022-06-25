@@ -1,0 +1,45 @@
+{% extends "lp/base-lista-clientes.html" %}
+
+{% block content %}
+
+
+
+
+           <!-- AREA FUNDO BRANCO -->
+
+<div class="bg-white border border-dark rounded pt-1 col-11 ml-3 pb-2" id="box-leads" style="position:absolute;left:50px;"
+     xmlns="http://www.w3.org/1999/html">
+             <!-- Formulário inline -->
+      <div class=" col-12 d-block mb-3 mt-3 p-4 " >
+         <form method="GET" class="mb-0" >
+        <input type="text"  class="form-control d-inline col-9  border-dark " placeholder="Pesquisar Clientes" name="search" id="search">
+        <div class="input-group-prepend d-inline mr-4 col-2  "  style="float: right;">
+          <button class="btn btn-outline-light bg-warning text-dark " type="submit" id="button-addon1">Buscar</button>
+        </div>
+      </form>
+      </div>
+          <!-- DISPLAY CAIXA LEADS -->
+           {% for ficha_cliente in  ficha_cliente %}
+
+         <div  id="">
+             <a class="btn  col-12 border border-dark rounded box  font-weight-bold text-dark" href="http://127.0.0.1:8000/dashboard/caixa-leads/cliente/{{ficha_cliente.pk}}/"
+                style="max-height:250px">
+
+                 <span class="align-id-clientes " style="position:relative;left:-100px;">Id Cliente:<span>{{ficha_cliente.id}}</span></span>
+                 {% if ficha_cliente.nome_empresa %}
+                 <span class="align-id-clientes"  style="position:relative;left:0px;" >Nome Empresa:<span>{{ficha_cliente.nome_empresa}}</span></span>
+
+                 {% else %}
+                    <span class="align-id-clientes"  style="position:relative;left:0px;">Nome Usuário:<span>{{ficha_cliente.nome_usuario}}</span></span>
+
+                {% endif %}
+
+
+             </a>
+         </div>
+        {%endfor%}
+    </div>
+         <!--FINAL  AREA FUNDO BRANCO -->
+
+
+{% endblock %}

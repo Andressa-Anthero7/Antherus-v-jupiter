@@ -1,0 +1,56 @@
+
+
+{% extends "lp/base.html" %}
+
+{% block content %}
+
+          <!-- AREA FUNDO BRANCO -->
+     <div class="bg-white border border-dark rounded pt-1 col-8 " id="box-msg" style="position:relative;left:0%;" >
+              <!--Conteudo -->
+
+          <!-- BTN com ID , DATA DE RECEBIMENTO E STATUS -->
+           {% for cx_leads_positivo in  cx_leads_positivo %}
+         <a class="btn  col-12 border border-dark rounded box" href="leads/{{cx_leads_positivo.pk}}"  id="caixa-leads"
+            style="max-height:250px">
+             <span id="status-bar-{{cx_leads_positivo.status|lower|slice:'6:'}}"  class="border rounded p-1  font-weight-bold status-bar-{{cx_leads_positivo.pk}} text-white" >{{cx_leads_positivo.status}}</span>
+             <span> Leads Nº {{cx_leads_positivo.pk}}</span>
+             <span>Recebido em {{cx_leads_positivo.data}}</span>
+         </a>
+
+         <!--<div class="modal fade bd-example-modal-sm col-12" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                   <div class="p-5">
+                        <span class="mr-1">Leads Id:<span>{{form.pk}}</span></span><br>
+                        <span class="mr-1">Recebido em:<span>{{form.data}}</span></span><br>
+                        <span class="mr-1">Status:<span>{{form.status}}</span></span>
+                    </div>
+                    <hr>
+                    <div class="p-5">
+                        <div>{{form.nome}}</div>
+                        <div>{{form.phone}}</div>
+                        <div>{{form.email}}</div>
+                    </div>
+                    <div class="ml-5">
+                        <div class="btn btn-success ">
+                            <a  class="text-white"  href="https://wa.me/5516{{form.phone}}?text=Acabei%20de%20%20ver%20a%20promoção%20Landing%20Page%20por%20R$%20299,90">
+                                <i class="fa fa-whatsapp  " aria-hidden="true">Atender via What´s App</i>
+                            </a>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary mr-3">Save changes</button>
+                    <button type="button" class="btn btn-secondary ml-5" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+          </div>
+        </div>-->
+    {%endfor%}
+
+ {% endblock %}
+
+
+    </div>
+         <!--FINAL  AREA FUNDO BRANCO -->
+
+

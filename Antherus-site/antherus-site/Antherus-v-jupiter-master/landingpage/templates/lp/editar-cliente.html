@@ -1,0 +1,401 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Landing Page - DASHBOARD</title>
+
+
+
+
+
+
+
+
+	<!-- Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+
+
+
+
+    <!-- Fontawesome CSS -->
+    <script src="https://kit.fontawesome.com/a69cec9c91.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+
+
+ <script>
+
+
+       dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+       monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+       now = new Date
+
+
+    </script>
+
+
+
+    <style>
+        #salvar-anotacoes{
+            visibility:hidden;
+        }
+
+         #status-bar-novo {
+            background:green;
+        }
+
+                @keyframes status-bar-novo {
+             99%{ opacity: 1; }
+             100% { opacity: 0; }
+         }
+        #status-bar-novo {
+               -webkit-animation: status-bar-novo 3s linear infinite;
+               -moz-animation: status-bar-novo 3s linear infinite;
+               -ms-animation: status-bar-novo 3s linear infinite;
+               -o-animation: status-bar-novo 3s linear infinite;
+               animation: status-bar-novo 3s linear infinite;
+        }
+
+        #status-bar-positivo{
+            background:red;
+        }
+
+        #status-bar-neutro{
+            background:yellow;
+        }
+
+        #status-bar-negativo{
+            background:	#00FFFF;
+        }
+
+
+
+
+
+
+    </style>
+
+
+
+
+</head>
+
+<header class="m-0 p-0  " style="" id="dashboard" >
+			            <!--Logo Marca Acima de XS-->
+
+
+          <div class="row pl-5  bg-warning m-1 bordered rounded" style="position: relative;
+          top:0x; left:2%; height:99px; ">
+            <div class="mt-3" >
+
+                <span class=" bg-white p-2 border rounded" >
+                    <span>Olá:</span>
+                    <span class="mr-5">{{request.user|capfirst}}!</span>
+                     <script language=javascript type="text/javascript">
+document.write ("<span> Hoje é " + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + ". </span>")
+</script>
+                    <span class="ml-5">Você tem :</span>
+
+                        <span class="bg-success p-1 border rounded" ><span class="mx-2" style="font-size:20px;">{{ count_novo|default:'0' }}</span>Leads Novo</span>
+                </span>
+
+                <!-- Botão de Area User -->
+
+                     <a href="/area-adm/" class=" btn btn-light py-0 px-4 " style="border:1px solid red;position:absolute; right:10%">
+                         <i class="fa fa-user " aria-hidden="true" style="font-size:24px;"></i>
+                         <p class="p-0 m-0">Perfil</p>
+                     </a>
+
+                <!-- Botão Caixa Leads -->
+                     <a href="/dashboard/caixa-leads/" class=" btn btn-light py-0 px-1 " style="border:1px solid red;position:absolute; right:20%">
+                         <i class="fa fa-envelope " aria-hidden="true" style="font-size:20px;"></i>
+                         <p class="p-0 m-0">Box Leads</p>
+                     </a>
+
+                    <!-- Botão Listagem de Clientes-->
+                    <a href="/lista-clientes/" class=" btn btn-light py-0 px-1 " style="border:1px solid red;position:absolute; right:30%">
+                         <i class="fa fa-list-alt " aria-hidden="true" style="font-size:20px;"></i>
+                         <p class="p-0 m-0">Clientes</p>
+                     </a>
+
+
+
+
+            </div>
+
+        </div>
+
+
+		</header>
+
+     <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+
+    <!-- Adicionando Javascript -->
+    <script>
+
+        window.onload = function(){
+           var escolha = $('#id_tipo_juridico').val();
+          if (escolha == "CNPJ"){
+             document.getElementById('campos-cpf').style.visibility='hidden';
+          };
+          if (escolha == "CPF"){
+             document.getElementById('campos-cnpj').style.visibility='hidden';
+          };
+           document.getElementById('escolhido').style.visibility='hidden';
+           document.getElementById('alert-tipo-juridico').style.visibility='visible';
+           document.getElementById("form-clientes").style.height='100px';
+        }
+
+        function formCnpj(){
+            document.getElementById('campos-cnpj').style.visibility='visible';
+            document.getElementById('campos-cpf').style.visibility='hidden';
+            document.getElementById('form-clientes-part-2').style.visibility='visible';
+            document.getElementById('form-clientes-part-2').style.position='relative';
+            document.getElementById('form-clientes-part-2').style.top='-120px';
+            document.getElementById('alert-tipo-juridico').style.visibility='hidden';
+            document.getElementById("form-clientes").style.height='900px';
+
+
+        };
+
+        function formCpf(){
+             document.getElementById('campos-cnpj').style.visibility='hidden';
+            document.getElementById('campos-cpf').style.visibility='visible';
+            document.getElementById('campos-cpf').style.position='relative';
+             document.getElementById('campos-cpf').style.top='-120px';
+            document.getElementById('form-clientes-part-2').style.visibility='visible';
+            document.getElementById('form-clientes-part-2').style.position='relative';
+            document.getElementById('form-clientes-part-2').style.top='-120px';
+            document.getElementById('alert-tipo-juridico').style.visibility='hidden';
+            document.getElementById("form-clientes").style.height='900px';
+
+        };
+
+        function formEscolha(){
+
+            var escolha = $('#id_tipo_juridico').val();
+            if( escolha == "CNPJ"){
+                    formCnpj()
+            }if( escolha == "CPF"){
+                formCpf()
+            }if( escolha != "CNPJ"  && escolha != "CPF") {
+                document.getElementById('alert-tipo-juridico').style.visibility='visible';
+                document.getElementById('campos-cnpj').style.visibility='hidden';
+                document.getElementById('campos-cpf').style.visibility='hidden';
+                document.getElementById('form-clientes-part-2').style.visibility='hidden';
+
+            }
+            };
+
+
+
+
+        $(document).ready(function() {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+                $("#ibge").val("");
+            }
+
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#rua").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade").val("...");
+                        $("#uf").val("...");
+                        $("#ibge").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                                $("#ibge").val(dados.ibge);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+
+    </script>
+
+
+
+
+
+     <main class="  py-1 mt-0 pt-0 row" id="conteudo-dashboard"   >
+
+
+    <div class="px-5 ml-5"><h1 class=" ml-5 mt-1 d-flex justify-content-center ml-5">Cadastro de Clientes</h1></div>
+
+    <!-- Inicio do formulario -->
+      <form method="POST" class=" border rounded border-dark pt-3  mb-5 mt-1 ml-5 col-11" id="form-perfil"  enctype="multipart/form-data" action =""  >
+                {% csrf_token %}
+                <div class="p-1">
+                       <label for="id_tipo_juridico">Tipo juridico:</label>
+    					<select name="tipo_juridico" required id="id_tipo_juridico" onchange="formEscolha()" >
+                            {% if post.escolha == "CNPJ" %}
+                                <option value="{{post.tipo_juridico}}" selected>{{post.tipo_juridico}}</option>
+
+                            {% else %}
+
+
+                                <option  value="{{post.tipo_juridico}}" selected>Escolha CPF ou CNPJ</option>
+                            {%endif%}
+
+                            <option value="CNPJ">CNPJ</option>
+                            <option value="CPF">CPF</option>
+					    </select>
+                </div>
+                <span id="alert-tipo-juridico" class="bg-danger border rounded p-1 text-white bold mb-0 pb-0" style="position:relative;left:300px;top:-40px;"><i class="fa fa-exclamation-triangle p-2 " style="color:yellow;" aria-hidden="true"></i>Se necessário alterne o  CNPJ ou CPF</span>
+                <hr class="m-0 p-0" style="position:relative;top:-30px;">
+                <div class="font-weight-bold">Tipo Juridico :<span class="ml-2">{{post.tipo_juridico}}</span></div>
+
+                {% if post.tipo_juridico == "CNPJ" %}
+                <!-- Campos nome e cnpj da empresa -->
+                <div id="campos-cnpj" class="p-2">
+                    <h6 class="my-2 p-3">Dados da Empresa</h6>
+                     <span id="cnpj-info">
+                          <label for="id_cnpj">CNPJ:</label>
+                          <input type="text" name="cnpj" maxlength="14" id="id_cnpj" class="col-2" value="{{post.cnpj|default:'Não Preenchido'}}">
+                     </span>
+
+
+                      <span id="nome-empresa-info" >
+                            <label for="id_nome_empresa" >Nome empresa:</label>
+                            <input type="text" name="nome_empresa" maxlength="50" id="id_nome_empresa" class="col-8 ml-1" value="{{post.nome_empresa|default:'Não Preenchido'}}">
+                      </span>
+                </div>
+                {% endif %}
+
+                {% if post.tipo_juridico == "CPF" %}
+                <!-- Campos CPF -->
+                <div id="campos-cpf" class="p-2">
+                    <h6 class="my-2 p-3">Dados Cliente Pessoa Física</h6>
+                      <span id="cpf-info">
+                            <label for="id_cpf">CPF:</label>
+                            <input type="text" name="cpf" maxlength="11" id="id_cpf" class="col-2" value="{{post.cpf|default:'Não Preenchido'}}">
+                      </span>
+
+
+                      <span id="nome-usuario-info" >
+                            <label for="id_nome_usuario" class="ml-1">Nome usuario:</label>
+                            <input type="text" name="nome_usuario" maxlength="50" id="id_nome_usuario" class="col-8 ml-1" value="{{post.nome_usuario|default:'Não Preenchido'}}">
+                      </span>
+                </div>
+          {% endif %}
+
+
+                    <!-- Fprmulario Parte 2 -->
+                  <div id="form-clientes-part-2" style="position:relative;top:0px;">
+
+
+                                <div id="ramo-atividade-info" class="mb-3">
+                                    <label for="id_ramo_atividade">Ramo de  atividade:</label>
+                                    <input type="text" name="ramo_atividade" maxlength="50" id="id_ramo_atividade" class="col-10" value="{{post.ramo_atividade|default:'Não Preenchido'}}">
+                                </div>
+
+                        <!-- ENDERECO -->
+                        <div CLASS="border rounded border-dark px-5 py-2">
+                                  <h6 class="my-2 p-3">Telefone/WhatsApp</h6>
+                                  <div>
+                                      <label for="id_telefone">Telefone:</label>
+                                      <input type="text" name="telefone" maxlength="13" id="id_telefone" value="{{post.telefone|default:'Não Preenchido'}}">
+                                </div>
+                                <h6 class="my-2 p-3">Endereço</h6>
+                              <div  id="cep-info">
+                                  <label>CEP:
+                                  <input name="cep" type="text" id="cep" value="{{post.cep|default:'Não Preenchido'}}"  maxlength="9" /></label><br />
+                              </div>
+
+
+                              <span id="rua-info">
+                                <label>Endereço:
+                                <input name="rua" type="text" id="rua" style="width:800px;" value="{{post.endereco|default:'Não Preenchido'}}" /></label><br />
+                              </span>
+
+                               <span id="num-endereco-info" style="position:relative;left:900px;top:-38px;">
+                                <label>Nº:
+                                <input name="num-endereco" type="text" id="num-endereco" value="{{post.num_endereco|default:'S/N'}}"  class="col-4" />
+                                </label><br />
+                              </span>
+
+                               <div id="bairro-info" style="position:relative;top:-38px;">
+                                    <label>Bairro:
+                                    <input name="bairro" type="text" id="bairro" size="70" value="{{post.bairro|default:'Não Preenchido'}}" /></label><br />
+                               </div>
+
+                               <div id="cidade-info"  style="position:relative;top:-38px;">
+                                    <label>Cidade:
+                                    <input name="cidade" type="text" id="cidade" size="70" value="{{post.cidade|default:'Não Preenchido'}}" /></label><br />
+                              </div>
+
+                               <div id="uf-info"  style="position:relative;top:-38px;">
+                                    <label>Estado:
+                                    <input name="uf" type="text" id="uf" size="40" value="{{post.estado|default:'Não Preenchido'}}" /></label><br />
+                               </div>
+                        </div>
+
+
+
+                      <div class="m-5">
+                          <input  type="submit" id="salvar-form-cliente" name="form-cliente" value="Editar Cliente" style="position:relative;left:80%;">
+                      </div>
+
+
+      </form>
+
+
+    </main>
+
+
+
+
+
+
+
+

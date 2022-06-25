@@ -1,0 +1,87 @@
+{% extends "lp/base-cadastro-clientes.html" %}
+
+{% block content %}
+
+    <div class="bg-white border border-dark rounded pt-1 col-10 ml-3" id="box-cliente" style="position:absolute;left:50px;"
+         xmlns="http://www.w3.org/1999/html">
+                <!-- BTN VOLTAR -->
+                <div class="my-1 ml-5 mt-3">
+                    <a href="/caixa-leads/" class="btn btn-sm btn-danger col-1 "  style="width:250px; min-width:250px;">
+                         <i class="fa fa-arrow-circle-left mr-2" aria-hidden="true"></i>VOLTAR
+                    </a>
+                </div>
+
+
+            <div>
+                <ul style="list-style: none;position:relative;left:400px;top:-50px;" class="border border-dark rounded col-7 ml-5 p-0 mt-2">
+
+                    {% if ficha_cliente.tipo_juridico == "CNPJ" %}
+                    <li class="border-bottom border-dark ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">ID:</span>{{ficha_cliente.id|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Tipo: </span>{{ficha_cliente.tipo_juridico|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold ">Nome Empresa: </span>{{ficha_cliente.nome_empresa|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">CNPJ: </span>{{ficha_cliente.cnpj|default:"Não Preenchido"}}</li>
+
+                    {% endif %}
+                    {%  if ficha_cliente.tipo_juridico == "CPF" %}
+                    <li class="border-bottom border-dark ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">ID:</span>{{ficha_cliente.id|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Tipo: </span>{{ficha_cliente.tipo_juridico|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Nome Usuário: </span>{{ficha_cliente.nome_usuario|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">CPF: </span>{{ficha_cliente.cpf|default:"Não Preenchido"}}</li>
+
+                    {% endif %}
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Ramo de Atividade: </span>{{ficha_cliente.ramo_atividade|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Telefone: </span>{{ficha_cliente.telefone|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">CEP: </span>{{ficha_cliente.cep|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Endereço: </span>{{ficha_cliente.endereco|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Nº: </span>{{ficha_cliente.num_endereco|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Bairro: </span>{{ficha_cliente.bairro|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Cidade: </span>{{ficha_cliente.cidade|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">UF: </span>{{ficha_cliente.estado|default:"Não Preenchido"}}</li>
+                    <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Produto: </span>{{ficha_cliente.produto|default:"Não há produto contrato"}}</li>
+                     <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Data Contratação: </span>{{ficha_cliente.data_contratacao|default:"Ainda não há Produto contratado"}}</li>
+                     <li class="ml-1 px-3 py-1"><span class="mr-2 font-weight-bold">Data Vencimento: </span>{{ficha_cliente.data_vencimento|default:"Ainda não há Produto contratado"}}</li>
+
+                </ul>
+
+
+
+
+            </div>
+
+
+         <!-- MENU LATERAL -->
+        <div class="col-4  border border-dark  rounded p-3  " style="position:relative;top:-420px;">
+
+            <a href="/editar-cliente/{{ficha_cliente.id}}/" class="btn btn-outline-warning d-block "  >
+                <i class="fa fa-pencil-square-o mr-2 " aria-hidden="true" style="color:lightslategray;font-size:24px;position:relative; left:-15px;"></i>
+                <span class="btn-lateral  text-dark font-weight-bold" style="position:relative;left:-7px;">Editar Cadastro Cliente</span>
+            </a>
+
+            <a href="/deletar-cliente/{{ficha_cliente.id}}/" class="btn btn-outline-warning d-block"  >
+                <i class="fa fa-trash-o mr-2 " aria-hidden="true" style="color:lightslategray;font-size:24px;position:relative; left:-15px;"></i>
+                <span class="btn-lateral text-dark font-weight-bold" style="position:relative;left:-5px;">Excluir Cadastro Cliente</span>
+            </a>
+
+            <a href="https://wa.me/55{{ficha_cliente.telefone|default:'Não Preenchido'}}?text=Olá Procurando Soluções para alavancar suas vendas pela internet??" target="_blank" rel="noopener noreferrer" class="btn btn-outline-warning d-block" >
+                <i class="fa fa-whatsapp mr-2 " aria-hidden="true" style="color:#34af23;font-size:36px;"></i>
+                <span class="btn-lateral  text-dark font-weight-bold" style="position:relative; top:-5px;left:5px;">Conversar pelo What´s App</span>
+            </a>
+
+        </div>
+
+        <div style="position:relative;top:-400px;">
+                <!--Formulario de contratacao -->
+              <form method="POST" class=" border rounded border-dark pt-1  p-5  col-4 " style="height:200px;" id="form-contratcao"  enctype="multipart/form-data" action =""  >
+                        {% csrf_token %}
+                                <h2 class="p-0 m-3" >Contratação de Plano</h2>
+                                {{form_contrato.as_p}}
+
+                              <div>
+                                  <input type="submit" id="salvar-form-contratcao" name="form-cliente" value="Contratar" style="position:relative;left:80%;top:-50px;">
+                              </div>
+              </form>
+        </div>
+    </div>
+
+
+{% endblock %}

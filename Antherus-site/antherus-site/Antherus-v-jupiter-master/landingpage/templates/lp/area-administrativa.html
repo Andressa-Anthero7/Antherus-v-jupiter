@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Landing Page - DASHBOARD</title>
+
+	<!-- Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'landingpage/css/dashboard.css' %}">
+
+   <!--<script type="text/javascript" src="{% static 'landingpage/js/dashboard.js' %}"></script>-->
+
+
+
+    <!-- Fontawesome CSS -->
+    <script src="https://kit.fontawesome.com/a69cec9c91.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <style>
+         .box:hover {
+            border: 10px solid black;
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+        }
+
+        .btn-lateral{
+            position:relative;
+            right:0%;
+        }
+
+
+        .len-box{
+            position:relative;
+            right:-20%;
+        }
+
+
+
+
+
+        #status-bar-novo {
+            background:green;
+        }
+
+                @keyframes status-bar-novo {
+             99%{ opacity: 1; }
+             100% { opacity: 0; }
+         }
+        #status-bar-novo {
+               -webkit-animation: status-bar-novo 3s linear infinite;
+               -moz-animation: status-bar-novo 3s linear infinite;
+               -ms-animation: status-bar-novo 3s linear infinite;
+               -o-animation: status-bar-novo 3s linear infinite;
+               animation: status-bar-novo 3s linear infinite;
+        }
+
+        #status-bar-positivo{
+            background:red;
+        }
+
+        #status-bar-neutro{
+            background:yellow;
+        }
+
+        #status-bar-negativo{
+            background:	#00FFFF;
+        }
+
+         /* Loader da Pagina */
+        /* Center the loader */
+            #loader {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              z-index: 1;
+              width: 120px;
+              height: 120px;
+              margin: -76px 0 0 -76px;
+              border: 16px solid #f3f3f3;
+              border-radius: 50%;
+              border-top: 16px solid #3498db;
+              -webkit-animation: spin 2s linear infinite;
+              animation: spin 2s linear infinite;
+            }
+
+            @-webkit-keyframes spin {
+              0% { -webkit-transform: rotate(0deg); }
+              100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+
+            /* Add animation to "page content" */
+            .animate-bottom {
+              position: relative;
+              -webkit-animation-name: animatebottom;
+              -webkit-animation-duration: 1s;
+              animation-name: animatebottom;
+              animation-duration: 1s
+            }
+
+            @-webkit-keyframes animatebottom {
+              from { bottom:-100px; opacity:0 }
+              to { bottom:0px; opacity:1 }
+            }
+
+            @keyframes animatebottom {
+              from{ bottom:-100px; opacity:0 }
+              to{ bottom:0; opacity:1 }
+            }
+
+
+    </style>
+
+
+ <script>
+          var onLoad;
+
+            function onLoader() {
+              onLoad = setTimeout(showPage, 1000);
+              document.getElementById("display-area-adm").style.visibility = "hidden";
+              document.getElementById("display-info-perfil").style.visibility = "hidden";
+            }
+
+            function showPage() {
+              document.getElementById("loader").style.visibility = "hidden";
+              document.getElementById("display-area-adm").style.visibility = "visible";
+               document.getElementById("display-info-perfil").style.visibility = "visible";
+            }
+
+        window.onload = function(){
+            document.getElementById("btn-salvar-perfil").style.visibility='hidden';
+            document.getElementById("form-perfil").style.visibility='hidden';
+            document.getElementById("form-perfil").style.position='absolute';
+            document.getElementById("form-perfil").style.top='0px';
+            document.getElementById("display-info-perfil").style.visibility='visible';
+            document.getElementById("display-area-adm").style.height='400px';
+            onLoader()
+
+        };
+
+
+
+
+
+
+         function goBack() {
+            location.reload();
+        }
+
+
+
+
+        function exibir_ocultar(){
+
+            var valor = $("#id_tipo_doc").val();
+            if(valor == 'CNPJ'){
+                cnpj()
+
+            }if(valor == 'CPF'){
+                 cpf()
+            }
+
+      };
+
+      function exibir_formPerfil(){
+            document.getElementById("form-perfil").style.visibility='visible';
+            document.getElementById("form-perfil").style.position='relative';
+            document.getElementById("form-perfil").style.top='0px';
+            document.getElementById("display-info-perfil").style.visibility='hidden';
+            document.getElementById("btn-salvar-perfil").style.visibility='visible';
+            document.getElementById("btn-salvar-perfil").style.position='relative';
+            document.getElementById("btn-salvar-perfil").style.left='70%';
+            document.getElementById("display-area-adm").style.height='600px';
+
+
+      };
+
+      function exibir_infoFinanceiras(){
+            document.getElementById("info-finan").style.visibility='visible';
+            document.getElementById("form-perfil").style.visibility='hidden';
+            document.getElementById("display-info-perfil").style.visibility='hidden';
+      };
+
+      dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+      monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+      now = new Date
+
+
+
+
+
+
+    </script>
+
+
+
+</head>
+<body id="body-area-adm">
+<div id="loader"></div>
+
+	<div  class=" container-fluid w-100 p-0 m-0 " id="container" >
+		<header class="m-0 p-0  " style="" id="dashboard" >
+			            <!--Logo Marca Acima de XS-->
+
+
+          <div class="row pl-5  bg-warning m-1 bordered rounded" style="position: relative;
+          top:0x; left:2%; height:99px; ">
+            <div class="mt-3" >
+
+                <span class=" bg-white p-2 border rounded mx-5" >
+                    <span>Olá:</span>
+                    <span class="mr-5">{{request.user|capfirst}}!</span>
+                    <script language=javascript type="text/javascript">
+                    document.write ("<span> Hoje é " + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + ". </span>")
+                    </script>
+                <span class="col-12"></span>
+                </span>
+
+
+
+                <!-- Botão Caixa Leads -->
+                     <a href="/dashboard/caixa-leads/" class=" btn btn-light py-0 px-1 " style="border:1px solid red;position:absolute; right:20%">
+                         <i class="fa fa-envelope " aria-hidden="true" style="font-size:20px;"></i>
+                         <p class="p-0 m-0">Box Leads</p>
+                     </a>
+
+                     <!-- Botão Listagem de Clientes-->
+                    <a href="/lista-clientes/" class=" btn btn-light py-0 px-1 " style="border:1px solid red;position:absolute; right:30%">
+                         <i class="fa fa-list-alt " aria-hidden="true" style="font-size:20px;"></i>
+                         <p class="p-0 m-0">Clientes</p>
+                     </a>
+
+
+
+            </div>
+
+        </div>
+
+
+		</header>
+
+
+
+
+             <main class="  py-1 mt-0 pt-0 row" id="conteudo-dashboard-area-adm"   >
+
+                <!-- MENU LATERAL -->
+                <span class="col-3 ml-5 mr-1 px-0 border border-dark  rounded  " >
+
+                    <!-- BTN PERFIL-->
+                    <a href="/area-adm/" class="btn btn-outline-info d-block" id="" onclick="showPerfil()" >
+                        <span class="btn-lateral">Perfil da Empresa</span>
+                    </a>
+
+                    <!-- BTN CADASTRAR PRODUTOS -->
+                     <a href="/cadastro-produtos/" class="btn btn-outline-info d-block" id="btn-cadastrar-produtos" onclick="showPerfil()" >
+                        <span class="btn-lateral">Cadastrar Produtos</span>
+                    </a>
+
+                     <!-- BTN PRODUTOS -->
+                     <a href="/lista-produtos/" class="btn btn-outline-info d-block" id="lista-produtos"  >
+                        <span class="btn-lateral">Produtos</span>
+                    </a>
+
+            </span>
+
+                 <!------------------------------------------------------------------------>
+                <!-- AREA FUNDO BRANCO -->
+                 <div class="bg-white border border-dark rounded pt-1  col-7 " id="display-area-adm" style="position:absolute;left:400px;" >
+
+                      <!-- FORMULÁRIO DO PERFIL -->
+
+                             <form method="POST" class=" border rounded p-0 m-5 col-10" id="form-perfil"  enctype="multipart/form-data" action =""  >
+
+                                 <h6 class="d-flex justify-content-center m-5">Edite as Informações do Perfil da Página e salve ao terminar!</h6>
+
+
+                             {% csrf_token %}
+                                  {% for display_perfil in display_perfil %}
+                                 <div class="ml-2 mb-2">
+                                    <label class="ml-2" for="id_nome_pagina">NOME DA PÁGINA:</label>
+                                    <input value="{{display_perfil.nome_pagina|default:'Nome não cadastrado'}}" type="text" name="nome_pagina" maxlength="50" id="id_nome_pagina" class="col-8">
+
+                                  </div>
+
+
+                                  <div class="ml-2  mb-2" >
+                                    <label  class="ml-5" for="id_whatsapp">WHAT´S APP:</label>
+                                    <input value="{{display_perfil.whatsapp|default:'What´s App não cadastrado'}}" type="text" name="whatsapp" maxlength="50" id="id_whatsapp" class="col-4">
+
+                                  </div>
+
+
+                                  <div class="ml-2  mb-2">
+                                    <label  class="ml-2" for="id_perfil_facebook">PERFIL FACEBOOK:</label>
+                                    <input value="{{display_perfil.perfil_facebook|default:'Perfil Facebook não cadastrado'}}" type="url" name="perfil_facebook" maxlength="256" id="id_perfil_facebook" class="col-8">
+
+                                  </div>
+
+
+                                  <div class="ml-1  mb-2">
+                                    <label  class="ml-1" for="id_perfil_instagram">PERFIL INSTAGRAM:</label>
+                                    <input value="{{display_perfil.perfil_instagram|default:'Perfil Instagram não cadastrado'}}" type="url" name="perfil_instagram" maxlength="256" id="id_perfil_instagram" class="col-8">
+
+                                  </div>
+
+
+                                  <div class="ml-2  mb-2">
+                                    <label  class="ml-2" for="id_canal_youtube">CANAL YOUTUBE:</label>
+                                    <input value="{{display_perfil.canal_youtube|default:'Canal You Tube não cadastrado'}}" type="url" name="canal_youtube" maxlength="256" id="id_canal_youtube" class="col-8">
+
+                                  </div>
+                                <input id="btn-salvar-perfil" class=" p-1 btn btn-sm btn-warning d-inline m-5"  type="submit" value="SALVAR PERFIL" name="salvar"  >
+                            </form>
+
+
+
+
+                     <div class="" id="display-info-perfil">
+                          <h3 class="d-flex justify-content-center m-5">Perfil da  Página</h3>
+                                     <!-- Display Info Perfil -->
+
+                                                <div class="border-bottom m-3">
+                                                     <span>Nome da Empresa:</span>
+                                                     <span class="ml-3">{{display_perfil.nome_pagina|default:"Nome não cadastrado"}}</span>
+                                                </div>
+
+                                                <div class="border-bottom m-3">
+                                                    <span>Numero do What´s App:</span>
+                                                    <span class="ml-3">{{display_perfil.whatsapp|default:"What´s App não cadastrado"}}</span>
+                                                </div>
+
+                                                <div class="border-bottom m-3">
+                                                    <span>Perfil Facebook:</span>
+                                                    <a href="{{display_perfil.perfil_facebook}}" class="ml-3">{{display_perfil.perfil_facebook|default:"Perfil FaceBook não cadstrado"}}</a>
+
+                                                </div>
+
+                                                <div class="border-bottom m-3">
+                                                    <span>Perfil Instagram:</span>
+                                                    <a href="{{display_perfil.perfil_instagram}}" class="ml-3">{{display_perfil.perfil_instagram|default:"Perfil Instagram não cadastrado"}}</a>
+                                                </div>
+
+                                                <div class=" m-3">
+                                                    <span>Perfil YouTube:</span>
+                                                    <a href="{{display_perfil.canal_youtube}}" class="ml-3">{{display_perfil.canal_youtube|default:"Canal You Tube não cadastrado"}}</a>
+                                                </div>
+
+
+
+                                            {% endfor %}
+                                              {% if display_perfil|length == 0 %}
+                                                             <!-- BTN CADASTRAR -->
+                                                        <button class="fa fa-pencil btn border border-dark rounded p-1 m-3" onclick=" exibir_formPerfil()" style="position:relative; left:75%;">
+                                                            <span class="ml-1" >Cadastrar Perfil</span>
+                                                        </button>
+
+
+                                                {% else %}
+
+                                                         <!-- BTN EDITAR -->
+                                                        <button class="fa fa-pencil btn border border-dark rounded p-1 m-3" onclick=" exibir_formPerfil()" style="position:relative; left:75%;">
+                                                            <span class="ml-1" >Editar Perfil</span>
+                                                        </button>
+
+
+
+                                                {% endif %}
+
+
+                     </div>
+                     <!-- FINAL Display Info Perfil -->
+
+
+
+
+                 </div>
+                 <!-- Final AREA BRANCA -->
+
+
+
+
+
+
+
+                     <!--FINAL  AREA FUNDO BRANCO -->
+
+
+
+
+            </main>
+
+	</div>
+		<!-- Fim do Container-->
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

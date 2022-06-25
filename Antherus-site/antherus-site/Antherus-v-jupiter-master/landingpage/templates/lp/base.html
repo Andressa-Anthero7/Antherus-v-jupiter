@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Landing Page - DASHBOARD</title>
+
+
+
+
+
+
+
+
+	<!-- Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'landingpage/css/dashboard.css' %}">
+
+   <!--<script type="text/javascript" src="{% static 'landingpage/js/dashboard.js' %}"></script>-->
+
+
+
+    <!-- Fontawesome CSS -->
+    <script src="https://kit.fontawesome.com/a69cec9c91.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <style>
+
+
+         .box:hover {
+            border: 10px solid black;
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+        }
+
+        .btn-lateral{
+            position:relative;
+            right:0%;
+        }
+
+
+        .len-box{
+            position:relative;
+            right:-20%;
+        }
+
+
+
+
+
+        #status-bar-novo {
+            background:green;
+             color:black;
+        }
+
+                @keyframes status-bar-novo {
+             99%{ opacity: 1; }
+             100% { opacity: 0; }
+         }
+        #status-bar-novo {
+               -webkit-animation: status-bar-novo 3s linear infinite;
+               -moz-animation: status-bar-novo 3s linear infinite;
+               -ms-animation: status-bar-novo 3s linear infinite;
+               -o-animation: status-bar-novo 3s linear infinite;
+               animation: status-bar-novo 3s linear infinite;
+        }
+
+        #status-bar-positivo{
+            background:red;
+            color:black;
+        }
+
+        #status-bar-neutro{
+            background:yellow;
+             color:black;
+        }
+
+        #status-bar-negativo{
+            background:	#00FFFF;
+             color:black;
+        }
+        /* Loader da Pagina */
+        /* Center the loader */
+            #loader {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              z-index: 1;
+              width: 120px;
+              height: 120px;
+              margin: -76px 0 0 -76px;
+              border: 16px solid #f3f3f3;
+              border-radius: 50%;
+              border-top: 16px solid #3498db;
+              -webkit-animation: spin 2s linear infinite;
+              animation: spin 2s linear infinite;
+            }
+
+            @-webkit-keyframes spin {
+              0% { -webkit-transform: rotate(0deg); }
+              100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+
+            /* Add animation to "page content" */
+            .animate-bottom {
+              position: relative;
+              -webkit-animation-name: animatebottom;
+              -webkit-animation-duration: 1s;
+              animation-name: animatebottom;
+              animation-duration: 1s
+            }
+
+            @-webkit-keyframes animatebottom {
+              from { bottom:-100px; opacity:0 }
+              to { bottom:0px; opacity:1 }
+            }
+
+            @keyframes animatebottom {
+              from{ bottom:-100px; opacity:0 }
+              to{ bottom:0; opacity:1 }
+            }
+
+            /*****************************************/
+            @media(max-width:479.99px) {
+                #header{
+                    position: relative;
+                    top:0x
+                    left:2%;
+                    height:500px;
+                }
+
+                #saudacao{
+                    max-width:100%;
+                    background:white;
+                    border-radius:10px;
+                    white-space:nowrap;
+                    position:relative;
+                    left:0%;
+                     text-align: center;
+                }
+
+                #data{
+                    max-width:80%;
+                    background:white;
+                    border-radius:10px;
+                    white-space:nowrap;
+                    position:relative;
+                    left:5%;
+                    font-size:13px;
+                    padding:1px;
+                    text-align: center;
+                    margin-top:10px;
+                }
+
+                #btn-perfil{
+                    border:1px solid red;
+                    position:absolute;
+                    left:10%;
+                    top:220px;
+                    font-size:22px;
+                    width:80%;
+
+                }
+
+                #btn-clientes{
+                     border:1px solid red;
+                    position:absolute;
+                    left:10%;
+                    top:300px;
+                    font-size:26px;
+                    width:80%;
+                }
+
+                #btn-cadastro{
+                     border:1px solid red;
+                    position:absolute;
+                    left:10%;
+                    top:390px;
+                    font-size:10px;
+                    width:80%;
+                }
+
+                #voce{
+                    max-width:80%;
+                    background:white;
+                    border-radius:10px;
+                    white-space:nowrap;
+                    position:relative;
+                    left:10%;
+                    top:20px;
+                    font-size:20px;
+                    padding-left:10px;
+                    padding-right:10px;
+                    text-align:center;
+                    self-align:center;
+                    margin-bottom:0px;
+
+                }
+
+                #contagem-leads-novos{
+                    min-width:150%;
+                    background:white;
+                    border-radius:10px;
+                    white-space:nowrap;
+                    position:relative;
+                    left:-33%;
+                    top:60px;
+                    font-size:13px;
+                    padding:20px;
+                    text-align: center;
+                    self-align:center;
+                    margin-top:5px;
+                    font-size:16px;
+
+                }
+
+                #menu-lateral{
+                    border:1px solid black;
+                    border-radius:10px;
+                    margin-left:25px;
+                    max-width:370px;
+                    margin-bottom:25px;
+
+
+                }
+
+                .btn-lateral{
+                    text-align:right;
+                }
+
+
+
+                #box-leads{
+                    position:absolute;
+                    left:10px;
+                    min-width:95%;
+                }
+
+                #box-leads-novos{
+                    position:absolute;
+                    left:10px;
+                    min-width:95%;
+                }
+
+                #box-leads-positivo{
+                     position:absolute;
+                    left:10px;
+                    min-width:95%;
+                }
+
+                #box-leads-neutro{
+                     position:absolute;
+                    left:10px;
+                    min-width:95%;
+                }
+
+
+
+                #box-leads-negativo{
+                     position:absolute;
+                    left:10px;
+                    min-width:95%;
+                }
+
+                .recebido{
+                    visibility:hidden;
+                }
+
+
+
+
+            }
+
+            /**************************************************/
+            @media(max-width:739.99px) and (min-width:480px) {
+
+            }
+
+
+            /*********************************************************************/
+            @media(max-width:  1059.99px) and (min-width:740px)  {
+
+            }
+
+            /***********************************************************************************/
+
+
+            /* Formatação Acima de 1080px */
+            @media(min-width:  1080.00px)  {
+
+            }
+
+
+    </style>
+
+
+ <script>
+             var onLoad;
+
+            function onLoader() {
+              onLoad = setTimeout(showPage, 1000);
+              document.getElementById("conteudo-dashboard").style.visibility = "hidden";
+            }
+
+            function showPage() {
+              document.getElementById("loader").style.visibility = "hidden";
+              document.getElementById("conteudo-dashboard").style.visibility = "visible";
+            }
+
+        window.onload = function(){
+            document.getElementById("box-leads-novos").style.visibility='hidden';
+            document.getElementById("box-leads-positivo").style.visibility='hidden';
+            document.getElementById("box-leads-neutro").style.visibility='hidden';
+            document.getElementById("box-leads-negativo").style.visibility='hidden';
+            onLoader()
+
+        };
+
+
+
+        function showCaixaLeads(){
+            location.reload();
+        };
+
+       function showCaixaLeadsNovos(){
+            document.getElementById("box-leads").style.visibility='hidden';
+            document.getElementById("box-leads-positivo").style.visibility='hidden';
+             document.getElementById("box-leads-neutro").style.visibility='hidden';
+              document.getElementById("box-leads-negativo").style.visibility='hidden';
+            document.getElementById("box-leads-novos").style.visibility='visible';
+
+
+
+
+       };
+
+       function showCaixaLeadsPositivo(){
+            document.getElementById("box-leads").style.visibility='hidden';
+            document.getElementById("box-leads-novos").style.visibility='hidden';
+             document.getElementById("box-leads-positivo").style.visibility='visible';
+             document.getElementById("box-leads-neutro").style.visibility='hidden';
+              document.getElementById("box-leads-negativo").style.visibility='hidden';
+
+       };
+
+       function showCaixaLeadsNeutro(){
+            document.getElementById("box-leads").style.visibility='hidden';
+            document.getElementById("box-leads-novos").style.visibility='hidden';
+            document.getElementById("box-leads-positivo").style.visibility='hidden';
+            document.getElementById("box-leads-neutro").style.visibility='visible';
+             document.getElementById("box-leads-negativo").style.visibility='hidden';
+       };
+
+        function showCaixaLeadsNegativo(){
+            document.getElementById("box-leads").style.visibility='hidden';
+            document.getElementById("box-leads-novos").style.visibility='hidden';
+            document.getElementById("box-leads-positivo").style.visibility='hidden';
+            document.getElementById("box-leads-neutro").style.visibility='hidden';
+            document.getElementById("box-leads-negativo").style.visibility='visible';
+       };
+
+         function goBack() {
+            location.reload();
+        }
+
+
+       dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+       monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+       now = new Date
+
+
+
+    </script>
+
+
+</head>
+<body>
+<div id="loader"></div>
+
+
+
+<script>
+
+</script>
+
+
+
+	<div  class=" container-fluid w-100 p-0 m-0 "  >
+		<header class="m-0 p-0  " style="" id="dashboard" >
+			            <!--Logo Marca Acima de XS-->
+
+
+          <div class="row pl-5  bg-warning m-1 bordered rounded" id="header" >
+            <div class="mt-3" >
+
+                <span class=" " id="id-user">
+                    <div id="saudacao">
+                        <span>Olá:</span>
+                        <span class="mr-5">{{request.user|capfirst}}!</span>
+                    </div>
+                    <div id="data">
+                         <script language=javascript type="text/javascript">document.write ("<span> Hoje é " + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + ". </span>")</script>
+
+                    </div>
+                    <span class="ml-5" id="voce">Você tem :</span>
+
+                        <span class="bg-success p-1 border rounded" id="contagem-leads-novos" ><span class="mx-2" style="font-size:20px;">{{ count_novo|default:'0' }}</span>Leads Novo</span>
+                </span>
+
+                    <!-- Botão de Area User -->
+                     <a href="/area-adm/" class=" btn btn-light py-0 px-4 " id="btn-perfil" >
+                         <i class="fa fa-user " aria-hidden="true" style="font-size:24px;"></i>
+                         <p class="p-0 m-0">Perfil</p>
+                     </a>
+
+                      <!-- Botão Listagem de Clientes-->
+                    <a href="/lista-clientes/" class=" btn btn-light py-0 px-1 " id="btn-clientes">
+                         <i class="fa fa-list-alt m-0 " aria-hidden="true" style="font-size:20px;"></i>
+                         <p class="p-0 m-0">Clientes</p>
+                     </a>
+
+                    <!-- Botão Cadastro de Clientes-->
+                    <a href="/cadastro-clientes/" class=" btn btn-light py-2 px-2 " id="btn-cadastro">
+                         <i class="fa fa-address-card-o " aria-hidden="true" style="font-size:22px;"></i>
+                         <p class="p-0 m-0"  style="font-size:20px;">Add Clientes</p>
+                     </a>
+
+
+
+
+            </div>
+
+        </div>
+
+
+		</header>
+
+
+
+
+     <main class="  py-1 mt-0 pt-0 row  d-block  " id="conteudo-dashboard"   >
+
+
+        <!-- MENU LATERAL -->
+        <div id="menu-lateral" >
+
+            <div class="btn btn-outline-info d-block text-dark font-weight-bold " id="btn-caixa-leads" onclick=" showCaixaLeads()" >
+                <span class="btn-lateral">Caixa de Leads</span>
+                <span class="len-box " >{{contador}}</span>
+            </div>
+
+            <div class="btn btn-outline-info d-block text-dark font-weight-bold" id="btn-leads-novos" onclick="showCaixaLeadsNovos()" >
+                <span class="btn-lateral">Leads Novos</span>
+                <span class=" len-box ">{{count_novo}}</span>
+            </div>
+
+            <div class="btn btn-outline-info d-block text-dark font-weight-bold" id="btn-leads-positivo" onclick=" showCaixaLeadsPositivo()">
+                <span class="btn-lateral">Leads Positivo</span>
+                <span class="len-box">{{count_leads_positivo}}</span>
+            </div>
+
+            <div class="btn btn-outline-info d-block text-dark font-weight-bold" id="btn-leads-neutro"  onclick=" showCaixaLeadsNeutro()">
+                <span class="btn-lateral">Leads Neutro</span>
+                <span class="len-box">{{count_leads_neutro}}</span>
+            </div>
+
+            <div class="btn btn-outline-info d-block text-dark font-weight-bold" id="btn-leads-negativo" onclick="showCaixaLeadsNegativo()">
+                <span>Leads Negativo</span>
+                <span class="len-box">{{count_leads_negativo}}</span>
+            </div>
+
+
+
+        </div>
+
+           <!--Conteudo -->
+		{% block content %}{% endblock %}
+		<!--Fim do Conteudo-->
+
+
+
+    </main>
+
+
+
+
+
+	</div>
+		<!-- Fim do Container-->
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

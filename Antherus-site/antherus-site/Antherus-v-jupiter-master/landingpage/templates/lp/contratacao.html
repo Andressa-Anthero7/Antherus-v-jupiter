@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Landing Page - DASHBOARD</title>
+
+	<!-- Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'landingpage/css/dashboard.css' %}">
+
+   <!--<script type="text/javascript" src="{% static 'landingpage/js/dashboard.js' %}"></script>-->
+
+
+
+    <!-- Fontawesome CSS -->
+    <script src="https://kit.fontawesome.com/a69cec9c91.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <style>
+         .box:hover {
+            border: 10px solid black;
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+        }
+
+        .btn-lateral{
+            position:relative;
+            right:0%;
+        }
+
+
+        .len-box{
+            position:relative;
+            right:-20%;
+        }
+
+
+
+
+
+        #status-bar-novo {
+            background:green;
+        }
+
+                @keyframes status-bar-novo {
+             99%{ opacity: 1; }
+             100% { opacity: 0; }
+         }
+        #status-bar-novo {
+               -webkit-animation: status-bar-novo 3s linear infinite;
+               -moz-animation: status-bar-novo 3s linear infinite;
+               -ms-animation: status-bar-novo 3s linear infinite;
+               -o-animation: status-bar-novo 3s linear infinite;
+               animation: status-bar-novo 3s linear infinite;
+        }
+
+        #status-bar-positivo{
+            background:red;
+        }
+
+        #status-bar-neutro{
+            background:yellow;
+        }
+
+        #status-bar-negativo{
+            background:	#00FFFF;
+        }
+
+
+    </style>
+
+
+ <script>
+
+        window.onload = function(){
+
+
+        };
+
+
+
+
+
+
+         function goBack() {
+            location.reload();
+        }
+
+
+
+
+        function exibir_ocultar(){
+
+            var valor = $("#id_tipo_doc").val();
+            if(valor == 'CNPJ'){
+                cnpj()
+
+            }if(valor == 'CPF'){
+                 cpf()
+            }
+
+      };
+
+      function exibir_formPerfil(){
+            document.getElementById("form-perfil").style.visibility='visible';
+            document.getElementById("form-perfil").style.position='relative';
+            document.getElementById("form-perfil").style.top='0px';
+            document.getElementById("display-info-perfil").style.visibility='hidden';
+            document.getElementById("btn-salvar-perfil").style.visibility='visible';
+            document.getElementById("btn-salvar-perfil").style.position='relative';
+            document.getElementById("btn-salvar-perfil").style.left='70%';
+            document.getElementById("display-area-adm").style.height='600px';
+
+
+      };
+
+      function exibir_infoFinanceiras(){
+            document.getElementById("info-finan").style.visibility='visible';
+            document.getElementById("form-perfil").style.visibility='hidden';
+            document.getElementById("display-info-perfil").style.visibility='hidden';
+      };
+
+      dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+      monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+      now = new Date
+
+
+
+
+
+
+    </script>
+
+
+
+</head>
+<body class=" "  >
+
+	<div  class=" container-fluid w-100 p-0 m-0 "  >
+		<header class="m-0 p-0  " style="" id="dashboard" >
+			            <!--Logo Marca Acima de XS-->
+
+
+          <div class="row pl-5  bg-warning m-1 bordered rounded" style="position: relative;
+          top:0x; left:2%; height:99px; ">
+            <div class="mt-3" >
+
+                <span class=" bg-white p-2 border rounded mx-5" >
+                    <span>Olá:</span>
+                    <span class="mr-5">{{request.user|capfirst}}!</span>
+                    <script language=javascript type="text/javascript">
+document.write ("<span> Hoje é " + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + ". </span>")
+</script>
+                <span class="col-12"></span>
+                </span>
+
+
+
+                <!-- Botão Caixa Leads -->
+                     <a href="/dashboard/caixa-leads/" class=" btn btn-light py-0 px-1 " style="border:1px solid red;position:absolute; right:20%">
+                         <i class="fa fa-envelope " aria-hidden="true" style="font-size:20px;"></i>
+                         <p class="p-0 m-0">Box Leads</p>
+                     </a>
+
+                     <!-- Botão Listagem de Clientes-->
+                    <a href="/lista-clientes/" class=" btn btn-light py-0 px-1 " style="border:1px solid red;position:absolute; right:30%">
+                         <i class="fa fa-list-alt " aria-hidden="true" style="font-size:20px;"></i>
+                         <p class="p-0 m-0">Clientes</p>
+                     </a>
+
+
+
+            </div>
+
+        </div>
+
+
+		</header>
+
+
+
+
+             <main class="  py-1 mt-0 pt-0 row" id="conteudo-dashboard"   >
+
+                <!-- MENU LATERAL -->
+                <span class="col-3 ml-5 mr-1 px-0 border border-dark  rounded  " >
+
+                    <!-- BTN PERFIL-->
+                    <a href="/area-adm/" class="btn btn-outline-info d-block" id="" onclick="showPerfil()" >
+                        <span class="btn-lateral">Perfil da Empresa</span>
+                    </a>
+
+                    <!-- BTN PRODUTOS -->
+                     <a href="/cadastro-produtos/" class="btn btn-outline-info d-block" id="" onclick="showPerfil()" >
+                        <span class="btn-lateral">Cadastrar Produtos</span>
+                    </a>
+
+            </span>
+                     {% for produto_contratado in produto_contratado %}
+                 <!------------------------------------------------------------------------>
+                <!-- AREA FUNDO BRANCO -->
+                 <div class="bg-white border border-dark rounded pt-1  col-7 " id="display-area-adm" style="position:absolute;left:400px;" >
+
+
+                     <div>{{produto_contratado.produto_contratado}}</div>
+                     <div>{{produto_contratado.contrato}}</div>
+                     <div>{{produto_cadastrado.vencimento}}</div>
+
+
+                 </div>
+                 <!-- Final AREA BRANCA -->
+                  {% endfor %}
+
+
+
+
+
+
+
+                     <!--FINAL  AREA FUNDO BRANCO -->
+
+
+
+
+            </main>
+
+	</div>
+		<!-- Fim do Container-->
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

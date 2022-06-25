@@ -1,0 +1,38 @@
+
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Tamanho Celulares */
+    @media(max-width:  768.99px){
+        body{
+
+
+
+        }
+
+
+
+
+
+    /* Formatação Acima de 769px */
+    @media(min-width:  769.00px)  {
+
+        body{
+            width: 100%;
+        }
+

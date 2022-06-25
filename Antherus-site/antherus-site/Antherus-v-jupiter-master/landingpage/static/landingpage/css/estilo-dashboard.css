@@ -1,0 +1,454 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+
+.navegacao{
+	position: relative;
+	left: 400px;
+	top: 40px;
+}
+
+
+
+
+
+
+
+#bg-gradient{
+	background-image:linear-gradient(#17EAD9 1%,#4717F6) ;
+}
+
+form{
+	border-top-left-radius:100px ;
+	border-top-right-radius:100px ;
+	border-bottom-left-radius:100px ;
+	border-bottom-right-radius:100px ;
+}
+
+
+#insta {
+                background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 0%, #fd5949 20%, #d6249f 60%, #285AEB 90%);
+                -webkit-background-clip: text;
+                /* Also define standard property for compatibility */
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+
+
+                border-color: black;
+
+            }
+
+#text-static{
+	background:#34af23 ;
+	color: white;
+	visibility: hidden;
+	position: absolute;
+	top: 50%;
+	left: 30%;
+}
+
+
+
+
+
+
+/* Tamanho Celulares */
+@media(max-width:  768.99px){
+	body{
+
+
+
+	}
+
+	header{
+		background:#0E0816;
+		height:300px;
+	}
+
+	main{
+		position: relative;
+		top: 100px;
+	}
+
+
+	#orcamento-bar a{
+	float: left;
+	position: fixed;
+	z-index: 3;
+	font-size: 50px;
+	top: 60%;
+	left: 70%;
+	color:#34af23 ;
+	background-color: transparent;
+
+	}
+
+	#orcamento-bar p {
+		display: none;
+	}
+
+
+
+	.navegacao{
+	position: relative;
+	left:0px;
+	top:120px;
+
+	}
+
+	li{
+		width:250%;
+		margin-bottom: 5px;
+		margin-left: 10px;
+	}
+
+	#fecha-menu{
+		display: none;
+		position: relative;
+		left: 0%;
+		align-self: center;
+
+
+	}
+
+	#abre-menu{
+		position: relative;
+		left: 0%;
+		align-self: center;
+
+
+	}
+
+
+
+	#menu{
+		position: relative;
+		top:25px;
+	}
+
+	#nav-bar-2{
+		display: none;
+	}
+
+	#area-logo{
+		position: relative;
+		top: 0;
+		left:0;
+		width: 100%;
+		height:50%;
+		margin: auto;
+	}
+
+	#nome-empresa{
+		position: relative;
+		color: white;
+		font-family: serif,sans-serif;
+	}
+
+	#redes-sociais-logo{
+		max-width:400px;
+		position: relative;
+		top: 50%;
+		left:5%;
+	}
+
+	#redes-sociais-logo i{
+		position: relative;
+		margin-left: 15%;
+	}
+
+	#carrousel-responsivo{
+		position: relative;
+		top: 60px;
+		left: 20px;
+		maring: auto;
+		max-width: 95%;
+
+	}
+
+	#img-logo{
+		display: none;
+	}
+
+	#img-logo-tablet{
+		position: relative;
+		left:20%;
+		top:10%;
+	}
+
+	#img-banner{
+		display: none;
+	}
+
+
+
+
+	#img-main{
+		height: 100%;
+		position: relative;
+		top:100px;
+
+	}
+
+
+
+	input{
+		border:1px solid black;
+		height:40px;
+		width:100%;
+	}
+
+	#footer{
+		text-align: center;
+		position: relative;
+		bottom:-100px;
+	}
+
+
+
+
+
+
+
+
+}
+
+
+
+/* Formatação Acima de 769px */
+@media(min-width:  769.00px)  {
+
+	body{
+		width: 100%;
+	}
+
+	header{
+		background:#0E0816;
+		height:100px;
+	}
+
+
+
+	input{
+		border:1px solid black;
+		height:40px;
+		width:500px;
+	}
+
+
+
+	#menu{
+		display: none;
+	}
+
+	#nome-empresa{
+		position: relative;
+		top:130px;
+		left: 220px;
+		color: white;
+		font-family: serif,sans-serif;
+	}
+
+	#redes-sociais-logo {
+		position: relative;
+		top:30%;
+		left: 25%;
+		width: 100%;
+
+
+	}
+
+	#redes-sociais-logo i {
+		margin-left:10%;
+
+	}
+
+	.navegacao{
+	position: relative;
+	left:30%;
+	top:-150px;
+
+
+	}
+
+	#area-logo{
+		position: relative;
+		left: 5%;
+		top: 2%;
+		margin: auto;
+	}
+
+	#img-logo-tablet{
+		display: none;
+		visibility: hidden;
+	}
+
+	#img-logo{
+		position: relative;
+		left:5%;
+		top:10%;
+	}
+
+	#img-main{
+		height: 100%;
+		position: relative;
+		top:100px;
+		margin-left: 1%;
+		margin-right: 5%;
+		border: 1px solid dimgray;
+		border-radius: 100px;
+
+
+	}
+
+
+
+
+
+	#carrousel{
+		position:relative;
+		top: 60px;
+	}
+
+	.form-responsivo{
+		position: relative;
+		top: 100px;
+		width: 60%;
+		margin-left: 1%;
+	}
+
+
+
+	#orcamento-bar a{
+	float: left;
+	position: fixed;
+	z-index:3;
+	font-size: 150px;
+	top: 60%;
+	left: 70%;
+	color:#34af23 ;
+	background-color: white;
+	background-color: transparent;
+
+
+
+}
+
+#text-blink{
+	background:#34af23 ;
+	color: white;
+	position: absolute;
+	top: 50%;
+	left: 30%;
+	-webkit-animation:text-blink 1s linear infinite;
+   -moz-animation:text-blink  1s linear infinite;
+   -ms-animation:text-blink 1s linear infinite;
+   -o-animation: text-blink 1s linear infinite;
+   animation:text-blink  1s linear infinite;
+
+
+
+
+}
+
+
+
+@keyframes text-blink{
+	0% { opacity: 1; }
+     100% { opacity: 0; }
+ }
+
+
+
+
+
+p{
+	margin-left: 100px;
+}
+
+#footer{
+	text-align: center;
+		position: relative;
+		left:-100px;
+		bottom:-150px;
+	}
+
+	#status-bar{
+    visibility:hidden;
+}
+
+
+#box-msg{
+    height:75%;
+}
+
+#hr{
+    position:relative;
+    top:-400%;
+    margin:0;
+    padding:0;
+}
+
+#title-msg{
+    position:relative;
+    top:-40px;
+    font-size:1em;
+
+}
+
+
+
+
+#msg{
+    visibility:hidden;
+}
+
+#abrir-msg{
+    position:relative;
+    left:300px;
+    top:0px;
+    font-size:36px;
+}
+
+#trash-icon{
+    position:relative;
+    left:20%;
+}
+
+
+
+#fechar-msg{
+    visibility:hidden;
+    font-size:36px;
+
+}
+
+#letter-closed{
+    visibility:hidden;
+}
+
+#letter-open{
+    background:green;
+}
+
+
+
+
+
+#btn-msgbox{
+        visibility:hidden;
+        position:relative;
+        top:-250px;
+        left:70%;
+        }
+
+
+
+
+
+}
+

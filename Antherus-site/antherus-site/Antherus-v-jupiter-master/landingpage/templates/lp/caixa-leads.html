@@ -1,0 +1,114 @@
+
+
+{% extends "lp/base.html" %}
+
+{% block content %}
+
+
+          <!-- AREA FUNDO BRANCO -->
+     <div class="bg-white border border-dark rounded pt-1 pb-2 col-8 " id="box-leads"  >
+          <!-- DISPLAY CAIXA LEADS -->
+           {% for cx_leads in  cx_leads %}
+
+         <div  id="caixa-leads">
+             <a class="btn  col-12 border border-dark rounded box text-dark font-weight-bold" href="/dashboard/caixa-leads/leads/{{cx_leads.pk}}"
+                style="max-height:250px">
+                 <span id="status-bar-{{cx_leads.status|lower|slice:'6:'}}"  class="border rounded p-1  font-weight-bold status-bar-{{cx_leads.pk}} " >{{cx_leads.status}}</span>
+
+                 <span class="ml-5"> Leads Nº {{cx_leads.pk}}</span>
+                 <span class="recebido">Recebido em {{cx_leads.data}}</span>
+             </a>
+         </div>
+        {%endfor%}
+    </div>
+         <!--FINAL  AREA FUNDO BRANCO -->
+
+    <!------------------------------------------------------------------------>
+    <!-- AREA FUNDO BRANCO -->
+     <div class="bg-white border border-dark rounded pt-1 pb-1 col-8 " id="box-leads-novos"  >
+
+         <!-- DISPLAY CAIXA NOVOS -->
+           {% for cx_leads_novos in   cx_leads_novos %}
+
+
+         <div  id="caixa-leads-novos">
+             <a class="btn  col-12 border border-dark rounded box" href="leads/{{cx_leads_novos.pk}}"
+                style="max-height:250px">
+                 <span id="status-bar-{{ cx_leads_novos.status|lower|slice:'6:'}}"  class="border rounded p-1  font-weight-bold status-bar-{{ cx_leads_novos.pk}} " >{{ cx_leads_novos.status}}</span>
+
+                 <span class="ml-5"> Leads Nº {{ cx_leads_novos.pk}}</span>
+                 <span class="recebido">Recebido em {{ cx_leads_novos.data}}</span>
+             </a>
+         </div>
+
+        {%endfor%}
+    </div>
+         <!--FINAL  AREA FUNDO BRANCO -->
+
+    <!------------------------------------------------------------------------>
+    <!-- AREA FUNDO BRANCO -->
+     <div class="bg-white border border-dark rounded pt-1 pb-1 col-8 " id="box-leads-positivo"  >
+
+         <!-- DISPLAY CAIXA POSITIVO -->
+           {% for cx_leads_positivo in   cx_leads_positivo %}
+
+         <div  id="caixa-leads-positivo">
+             <a class="btn  col-12 border border-dark rounded box" href="leads/{{cx_leads_positivo.pk}}"
+                style="max-height:250px">
+                 <span id="status-bar-{{cx_leads_positivo.status|lower|slice:'6:'}}"  class="border rounded p-1  font-weight-bold status-bar-{{cx_leads_positivo.pk}} " >{{ cx_leads_positivo.status}}</span>
+
+                 <span class="ml-5"> Leads Nº {{ cx_leads_positivo.pk}}</span>
+                 <span class="recebido">Recebido em {{cx_leads_positivo.data}}</span>
+             </a>
+         </div>
+
+        {%endfor%}
+    </div>
+         <!--FINAL  AREA FUNDO BRANCO -->
+
+    <!------------------------------------------------------------------------>
+    <!-- AREA FUNDO BRANCO -->
+     <div class="bg-white border border-dark rounded pt-1 pb-1 col-8 " id="box-leads-neutro" >
+
+         <!-- DISPLAY CAIXA NEUTRO -->
+           {% for cx_leads_neutro in   cx_leads_neutro %}
+
+         <div  id="caixa-leads_neutro">
+             <a class="btn  col-12 border border-dark rounded box" href="leads/{{ cx_leads_neutro.pk}}"
+                style="max-height:250px">
+                 <span id="status-bar-{{ cx_leads_neutro.status|lower|slice:'6:'}}"  class="border rounded p-1  font-weight-bold status-bar-{{ cx_leads_neutro.pk}} " >{{ cx_leads_neutro.status}}</span>
+
+                 <span class="ml-5"> Leads Nº {{  cx_leads_neutro.pk}}</span>
+                 <span class="recebido">Recebido em {{ cx_leads_neutro.data}}</span>
+             </a>
+         </div>
+
+        {%endfor%}
+    </div>
+         <!--FINAL  AREA FUNDO BRANCO -->
+
+      <!------------------------------------------------------------------------>
+    <!-- AREA FUNDO BRANCO -->
+     <div class="bg-white border border-dark rounded pt-1 pb-1 col-8 " id="box-leads-negativo"  >
+
+         <!-- DISPLAY CAIXA NOVOS -->
+           {% for cx_leads_negativo in   cx_leads_negativo %}
+
+         <div  id="caixa-leads_negativo">
+             <a class="btn  col-12 border border-dark rounded box" href="leads/{{ cx_leads_negativo.pk}}"
+                style="max-height:250px">
+                 <span id="status-bar-{{ cx_leads_negativo.status|lower|slice:'6:'}}"  class="border rounded p-1  font-weight-bold status-bar-{{  cx_leads_negativo.pk}}" >{{  cx_leads_negativo.status}}</span>
+
+                 <span class="ml-5"> Leads Nº {{   cx_leads_negativo.pk}}</span>
+                 <span class="recebido">Recebido em {{ cx_leads_negativo.data}}</span>
+             </a>
+         </div>
+
+        {%endfor%}
+    </div>
+         <!--FINAL  AREA FUNDO BRANCO -->
+
+
+{% endblock %}
+
+
